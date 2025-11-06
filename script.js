@@ -10,6 +10,7 @@ let descriptionNameofTask;
 
 const container_task_show = document.getElementById("container");
 
+
 function Task(name, description, isReady = false){
     this.name = name;
     this.description = description;
@@ -57,13 +58,13 @@ function renderTasks() {
          context_menu.classList.add("context_menu");
      
          const delete_button = document.createElement("button");
-         delete_button.textContent = "Удалить";
+         delete_button.textContent = "Delete";
      
          const rename_button = document.createElement("button");
-         rename_button.textContent = "Переименовать";
+         rename_button.textContent = "Raname";
      
          rename_button.addEventListener("click", () => {
-             const newName = prompt("Введите новое имя задачи:", ListOfTask[i].name);
+             const newName = prompt("Enter new name:", ListOfTask[i].name);
              if (newName && newName.trim() !== "") {
                  ListOfTask[i].name = newName;
                  renderTasks();
@@ -79,6 +80,19 @@ function renderTasks() {
     context_menu.appendChild(delete_button);
 
     button_task_settins_div.appendChild(context_menu);
+
+    const rect = context_menu.getBoundingClientRect();
+    const overflowRight = rect.right > window.innerWidth;
+    const overflowBottom = rect.bottom > window.innerHeight;
+    
+    if (overflowRight) {
+     
+        context_menu.style.left = `-${rect.width}px`;
+    }
+    if (overflowBottom) {
+   
+        context_menu.style.top = `-${rect.height}px`;
+    }
 });
 
 
@@ -145,6 +159,11 @@ const AddButton = document.getElementById("Add_Task");
       
       
     }else{
+            if (!InputNameofTask.value.trim()) {
+                alert("Enter name of task");
+                return;
+            }
+
            let task = new Task(InputNameofTask.value, descriptionNameofTask.value);
               
            ListOfTask.push(task);

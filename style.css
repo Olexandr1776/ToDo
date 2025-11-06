@@ -1,7 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden; 
+}
+
 body{
     background-color: #f2f2f2;
     font-family: 'Roboto', sans-serif;
 }
+
 
 header{
     display: flex;
@@ -86,8 +94,8 @@ main article button:hover{
     padding: 10px;
     height: 20px;
   
-
 }
+
 .ButtonReady {
     width: 24px;
     height: 24px;
@@ -162,7 +170,9 @@ main article button:hover{
     gap: 5px;
     z-index: 10;
 }
-
+.button_task_settins_div {
+    position: relative; 
+}
 .context_menu button {
     background: none;
     border: none;
@@ -181,4 +191,16 @@ main article button:hover{
 
 .context_menu button:hover {
     background: #eee;
+}
+
+@media(max-width: 430px){
+    main article{
+    padding: 20px;
+    width: 80%;
+    min-height: 400px;
+    height: 80%;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 20px;
+}
 }
